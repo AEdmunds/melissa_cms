@@ -3,39 +3,52 @@
   <% javascript_include_tag('bootstrap-carosel' ,'show', 'bootstrap-dropdown') %>
 <% end %>
 
-<div class="page-header">
-	<h1>
-	    <%=raw @page.title %>
-	</h1>
-</div>
-
+<section>
+		<div class='row'>
+			<div class='span10 offset1'>
+				<div class="page-header">
+					<h1>
+					    <%=raw @page.title %>
+					</h1>
+				</div>
+			</div>		
+		</div>	
+</section>
 <% if @page.images.any? %> 
 
 	<section>
 		<div class='row'>
 			<div class='span10 offset1'>
 				
-					<div id="pageCarousel" class="carousel slide">
-					  <!-- Carousel items -->
-					  <div class="carousel-inner">
-
-				    	<div class="active item">
-				    		<%= image_tag(@page.images.first.thumbnail("900x600").url) %>
-				    	</div>
-					   
-					    <% @page.images[1..-1].each_with_index do |image, i| %>
-					    
-					    	<div class="item">
-					    		<%= image_tag(image.thumbnail("900x600").url) %>
-					    	</div>
-					    
-					    <% end %>
-					  </div>
-					  <!-- Carousel nav -->
-					  <a class="carousel-control left" href="#pageCarousel" data-slide="prev">&lsaquo;</a>
-					  <a class="carousel-control right" href="#pageCarousel" data-slide="next">&rsaquo;</a>
-					</div>
+					<% if @page.images.count == 1 %>
 					
+						<%= image_tag(@page.images.first.thumbnail("900x600").url) %>
+				
+					<% else %>
+
+						<div id="pageCarousel" class="carousel slide">
+						  <!-- Carousel items -->
+						  <div class="carousel-inner">
+
+					    	<div class="active item">
+					    		<%= image_tag(@page.images.first.thumbnail("900x600").url) %>
+					    	</div>
+						   
+						    <% @page.images[1..-1].each_with_index do |image, i| %>
+						    
+						    	<div class="item">
+						    		<%= image_tag(image.thumbnail("900x600").url) %>
+						    	</div>
+						    
+						    <% end %>
+						  </div>
+						  <!-- Carousel nav -->
+						  <a class="carousel-control left" href="#pageCarousel" data-slide="prev">&lsaquo;</a>
+						  <a class="carousel-control right" href="#pageCarousel" data-slide="next">&rsaquo;</a>
+						</div>
+					
+					<% end %>
+
 			<div>	
 		</div>			
 	</section>			
@@ -46,16 +59,16 @@
 	<div class='row'>
 		<% if @page.content_for(:side_body).empty? %>
 
-		<div class="span12">
+		<div class="span10 offset1">
 			<%=raw @page.content_for(:body) %>
 		</div>
 
 		<% else %>
 		
-			<div class="span6">
+			<div class="span5 offset1">
 				<%=raw @page.content_for(:body) %>
 			</div>
-			<div class="span6">
+			<div class="span5">
 				<%=raw @page.content_for(:side_body) %>			
 			</div>	
 		

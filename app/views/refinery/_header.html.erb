@@ -1,12 +1,14 @@
-  <div class="navbar-inner">
+  
     <div class="container">
-    	<%= link_to "Melissa Franklin", '#', id: "logo" %>
-        <%= render(:partial => "/refinery/menu", :locals => {
-         :css => 'nav pull-right'
-       }) %>	
+    	<div class='row'>
+    		<div class='span2'>		
+		    	<%= render(:partial => "/refinery/menu", :locals => {
+		         :css => 'nav nav-pills nav-stacked'
+		       }) %>	
+   			</div>
+		</div>
       </div>
     </div>
-  </div>
-
+  
 
   
